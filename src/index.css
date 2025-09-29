@@ -6,63 +6,78 @@
 
 @layer base {
   :root {
-    /* Professional Blue Palette */
-    --background: 220 15% 97%;
-    --foreground: 220 25% 10%;
+    /* Dark Theme with Shining Colors */
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 15% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 220 15% 95%;
 
-    --primary: 220 90% 56%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 220 100% 65%;
+    --primary: 220 100% 60%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 220 100% 70%;
+    --primary-shine: 220 100% 80%;
 
-    --secondary: 220 20% 95%;
-    --secondary-foreground: 220 25% 10%;
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 15% 90%;
 
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 15% 14%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 220 85% 60%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 270 100% 65%;
+    --accent-foreground: 220 25% 8%;
+    --accent-glow: 270 100% 75%;
 
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 220 25% 8%;
 
-    --warning: 40 96% 53%;
-    --warning-foreground: 40 10% 15%;
+    --warning: 45 100% 55%;
+    --warning-foreground: 220 25% 8%;
 
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
+    --success: 150 80% 50%;
+    --success-foreground: 220 25% 8%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 90% 56%;
+    --border: 220 20% 20%;
+    --input: 220 20% 16%;
+    --ring: 220 100% 60%;
 
-    /* Legal Risk Colors */
-    --risk-high: 0 85% 60%;
-    --risk-medium: 40 96% 53%;
-    --risk-low: 142 76% 36%;
-    --risk-minimal: 160 84% 39%;
+    /* Enhanced Risk Colors with Glow */
+    --risk-high: 0 85% 55%;
+    --risk-high-glow: 0 100% 65%;
+    --risk-medium: 45 100% 55%;
+    --risk-medium-glow: 45 100% 65%;
+    --risk-low: 150 80% 50%;
+    --risk-low-glow: 150 90% 60%;
+    --risk-minimal: 180 85% 45%;
+    --risk-minimal-glow: 180 95% 55%;
 
-    /* Professional Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(220 100% 65%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 20% 95%), hsl(220 15% 96%));
-    --gradient-glass: linear-gradient(135deg, hsl(220 30% 98% / 0.8), hsl(220 20% 95% / 0.6));
-    --gradient-hero: linear-gradient(135deg, hsl(220 95% 65%) 0%, hsl(220 90% 56%) 50%, hsl(220 85% 48%) 100%);
+    /* Shining Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 60%), hsl(220 100% 70%), hsl(220 100% 80%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 15% 15%), hsl(220 20% 18%), hsl(220 15% 20%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 20% 12% / 0.9), hsl(220 15% 10% / 0.7));
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 60%) 0%, hsl(270 100% 65%) 50%, hsl(220 100% 70%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(270 100% 65%), hsl(280 100% 70%));
+    --gradient-risk-high: linear-gradient(135deg, hsl(0 85% 55%), hsl(0 100% 65%));
+    --gradient-risk-medium: linear-gradient(135deg, hsl(45 100% 55%), hsl(45 100% 65%));
+    --gradient-risk-low: linear-gradient(135deg, hsl(150 80% 50%), hsl(150 90% 60%));
 
-    /* Professional Shadows */
-    --shadow-soft: 0 4px 20px hsl(220 90% 56% / 0.08);
-    --shadow-medium: 0 8px 30px hsl(220 90% 56% / 0.12);
-    --shadow-strong: 0 12px 40px hsl(220 90% 56% / 0.16);
-    --shadow-glow: 0 0 30px hsl(220 100% 65% / 0.25);
+    /* Enhanced Shadows with Glow Effects */
+    --shadow-soft: 0 4px 20px hsl(220 100% 60% / 0.15);
+    --shadow-medium: 0 8px 30px hsl(220 100% 60% / 0.25);
+    --shadow-strong: 0 12px 40px hsl(220 100% 60% / 0.35);
+    --shadow-glow: 0 0 40px hsl(220 100% 70% / 0.6);
+    --shadow-glow-accent: 0 0 30px hsl(270 100% 65% / 0.5);
+    --shadow-glow-risk-high: 0 0 25px hsl(0 100% 65% / 0.4);
+    --shadow-glow-risk-medium: 0 0 25px hsl(45 100% 65% / 0.4);
+    --shadow-glow-risk-low: 0 0 25px hsl(150 90% 60% / 0.4);
 
-    /* Animation Variables */
+    /* Shining Animation Variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glow: box-shadow 0.3s ease, transform 0.3s ease;
 
     --radius: 0.5rem;
 

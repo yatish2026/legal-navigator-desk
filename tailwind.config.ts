@@ -23,6 +23,7 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           glow: "hsl(var(--primary-glow))",
+          shine: "hsl(var(--primary-shine))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -47,6 +48,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -58,9 +60,13 @@ export default {
         },
         risk: {
           high: "hsl(var(--risk-high))",
+          "high-glow": "hsl(var(--risk-high-glow))",
           medium: "hsl(var(--risk-medium))",
+          "medium-glow": "hsl(var(--risk-medium-glow))",
           low: "hsl(var(--risk-low))",
+          "low-glow": "hsl(var(--risk-low-glow))",
           minimal: "hsl(var(--risk-minimal))",
+          "minimal-glow": "hsl(var(--risk-minimal-glow))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -83,12 +89,20 @@ export default {
         'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-glass': 'var(--gradient-glass)',
         'gradient-hero': 'var(--gradient-hero)',
+        'gradient-accent': 'var(--gradient-accent)',
+        'gradient-risk-high': 'var(--gradient-risk-high)',
+        'gradient-risk-medium': 'var(--gradient-risk-medium)',
+        'gradient-risk-low': 'var(--gradient-risk-low)',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
         'medium': 'var(--shadow-medium)',
         'strong': 'var(--shadow-strong)',
         'glow': 'var(--shadow-glow)',
+        'glow-accent': 'var(--shadow-glow-accent)',
+        'glow-risk-high': 'var(--shadow-glow-risk-high)',
+        'glow-risk-medium': 'var(--shadow-glow-risk-medium)',
+        'glow-risk-low': 'var(--shadow-glow-risk-low)',
       },
       keyframes: {
         "accordion-down": {

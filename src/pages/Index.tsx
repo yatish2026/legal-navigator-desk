@@ -181,7 +181,7 @@ const Index = () => {
               Professional legal contract analysis powered by artificial intelligence.
             </p>
             <p className="text-xs text-muted-foreground">
-              © 2024 LegalAI. For demonstration purposes only. Not a substitute for professional legal advice.
+              © 2025 LegalAI. For demonstration purposes only. Not a substitute for professional legal advice.
             </p>
           </div>
         </div>

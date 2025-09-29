@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertTriangle, Shield, CheckCircle, XCircle, Download, Languages } from 'lucide-react';
+import { AlertTriangle, Shield, CheckCircle, XCircle, Download, Languages, FileText, Clock, Scale } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ClauseAnalysisProps {
@@ -13,24 +13,34 @@ interface ClauseAnalysisProps {
 
 export const ClauseAnalysis: React.FC<ClauseAnalysisProps> = ({ analysis }) => {
   const [language, setLanguage] = useState<'english' | 'hindi'>('english');
+  const [expandedClauses, setExpandedClauses] = useState<string[]>([]);
 
+  // Enhanced risk color mapping with glow effects
   const getRiskColor = (risk: string) => {
     switch (risk.toLowerCase()) {
-      case 'high': return 'bg-risk-high text-white border-risk-high';
-      case 'medium': return 'bg-risk-medium text-white border-risk-medium';
-      case 'low': return 'bg-risk-low text-white border-risk-low';
+      case 'high': return 'bg-gradient-risk-high text-white border-risk-high shadow-glow-risk-high';
+      case 'medium': return 'bg-gradient-risk-medium text-white border-risk-medium shadow-glow-risk-medium';
+      case 'low': return 'bg-gradient-risk-low text-white border-risk-low shadow-glow-risk-low';
       default: return 'bg-risk-minimal text-white border-risk-minimal';
     }
   };
 
   const getComplianceColor = (compliance: string) => {
     switch (compliance.toLowerCase()) {
-      case 'yes': return 'bg-success text-white';
-      case 'no': return 'bg-destructive text-white';
-      default: return 'bg-warning text-white';
+      case 'yes': return 'bg-gradient-risk-low text-white shadow-glow-risk-low';
+      case 'no': return 'bg-gradient-risk-high text-white shadow-glow-risk-high';
+      default: return 'bg-gradient-risk-medium text-white shadow-glow-risk-medium';
     }
   };
 
+  // Enhanced language toggle handler
+  const handleLanguageChange = (newLanguage: 'english' | 'hindi') => {
+    setLanguage(newLanguage);
+    // Add a slight delay for smooth transition effect
+    setTimeout(() => {
+      // Trigger re-render animation
+    }, 100);
+  };
   const getComplianceIcon = (compliance: string) => {
     switch (compliance.toLowerCase()) {
       case 'yes': return <CheckCircle className="w-4 h-4" />;
@@ -39,36 +49,90 @@ export const ClauseAnalysis: React.FC<ClauseAnalysisProps> = ({ analysis }) => {
     }
   };
 
+  // Enhanced PDF report generation with more comprehensive content
   const generatePDFReport = () => {
-    // Simulate PDF generation
+    const timestamp = new Date().toLocaleString();
     const pdfContent = `
-Legal Contract Analysis Report
-Generated on: ${new Date().toLocaleDateString()}
-Contract: ${analysis.fileName}
+═══════════════════════════════════════════
+LEGALAI - COMPREHENSIVE CONTRACT ANALYSIS
+═══════════════════════════════════════════
 
+Analysis Report Generated: ${timestamp}
+Contract File: ${analysis.fileName}
+Contract Type: ${analysis.contractType || 'General Agreement'}
+Legal Complexity: ${analysis.legalComplexity || 'Standard'}
+Estimated Review Time: ${analysis.estimatedReviewTime || '15-20 minutes'}
+
+═══════════════════════════════════════════
 EXECUTIVE SUMMARY
+═══════════════════════════════════════════
+
+Overall Risk Assessment: ${analysis.overall_risk_score} RISK
 ${analysis.summary}
 
-OVERALL RISK SCORE: ${analysis.overall_risk_score}
+${analysis.jurisdictionNotes || 'Please consult with local legal counsel for jurisdiction-specific advice.'}
 
-CLAUSE ANALYSIS:
+═══════════════════════════════════════════
+DETAILED CLAUSE ANALYSIS
+═══════════════════════════════════════════
+
 ${analysis.clauses.map((clause: any, index: number) => `
-${index + 1}. ${clause.clause}
-   Risk Level: ${clause.risk}
-   Compliance: ${clause.compliance}
-   Explanation: ${clause.explanation}
-   Suggestion: ${clause.suggestion}
+CLAUSE ${index + 1}: ${clause.risk.toUpperCase()} RISK | COMPLIANCE: ${clause.compliance.toUpperCase()}
+─────────────────────────────────────────────────────────
+
+Original Text:
+"${clause.clause}"
+
+Risk Assessment: ${clause.risk}
+Compliance Status: ${clause.compliance}
+
+English Analysis:
+${clause.explanation}
+
+Hindi Translation (हिंदी अनुवाद):
+${clause.hindi_translation}
+
+Recommended Action:
+${clause.suggestion}
+
+─────────────────────────────────────────────────────────
 `).join('\n')}
 
-RECOMMENDATIONS:
+═══════════════════════════════════════════
+KEY RECOMMENDATIONS
+═══════════════════════════════════════════
+
 ${analysis.recommendations?.map((rec: string, index: number) => `${index + 1}. ${rec}`).join('\n') || 'No specific recommendations available.'}
+
+═══════════════════════════════════════════
+RISK SUMMARY
+═══════════════════════════════════════════
+
+Total Clauses Analyzed: ${analysis.clauses.length}
+High Risk Clauses: ${analysis.clauses.filter((c: any) => c.risk.toLowerCase() === 'high').length}
+Medium Risk Clauses: ${analysis.clauses.filter((c: any) => c.risk.toLowerCase() === 'medium').length}
+Low Risk Clauses: ${analysis.clauses.filter((c: any) => c.risk.toLowerCase() === 'low').length}
+
+Compliant Clauses: ${analysis.clauses.filter((c: any) => c.compliance === 'Yes').length}
+Non-Compliant Clauses: ${analysis.clauses.filter((c: any) => c.compliance === 'No').length}
+Partially Compliant: ${analysis.clauses.filter((c: any) => c.compliance === 'Partial').length}
+
+═══════════════════════════════════════════
+DISCLAIMER
+═══════════════════════════════════════════
+
+This analysis is generated by LegalAI for informational purposes only and does not constitute legal advice. 
+Always consult with a qualified attorney before making legal decisions based on this analysis.
+
+© 2025 LegalAI - AI-Powered Legal Contract Analysis
+Report ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}
 `;
 
     const blob = new Blob([pdfContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `contract-analysis-${analysis.fileName.replace(/\.[^/.]+$/, '')}.txt`;
+    a.download = `LegalAI-Analysis-${analysis.fileName.replace(/\.[^/.]+$/, '')}-${new Date().toISOString().split('T')[0]}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -77,100 +141,174 @@ ${analysis.recommendations?.map((rec: string, index: number) => `${index + 1}. $
 
   return (
     <div className="space-y-6 animate-slide-in">
-      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/20 shadow-medium">
+      {/* Enhanced Contract Overview */}
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-accent rounded-lg flex items-center justify-center shadow-glow-accent">
+                <FileText className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-xl text-foreground">Contract Overview</CardTitle>
+                <p className="text-sm text-muted-foreground">{analysis.contractType || 'Legal Agreement'}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-1">
+                <Clock className="w-4 h-4" />
+                <span>{analysis.estimatedReviewTime || '15-20 min'}</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Scale className="w-4 h-4" />
+                <span>{analysis.legalComplexity || 'Standard'}</span>
+              </div>
+            </div>
+          </div>
+        </CardHeader>
+      </Card>
+
+      {/* Enhanced Clause Analysis */}
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="flex items-center space-x-2">
             <Shield className="w-5 h-5 text-primary" />
-            <span>Clause-by-Clause Analysis</span>
+            <span>Detailed Clause Analysis</span>
+            <Badge variant="outline" className="ml-2">
+              {analysis.clauses.length} Clauses
+            </Badge>
           </CardTitle>
           <div className="flex items-center space-x-4">
-            <Tabs value={language} onValueChange={(value: any) => setLanguage(value)} className="w-auto">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="english" className="flex items-center space-x-1">
-                  <Languages className="w-4 h-4" />
-                  <span>English</span>
-                </TabsTrigger>
-                <TabsTrigger value="hindi" className="flex items-center space-x-1">
-                  <Languages className="w-4 h-4" />
-                  <span>हिंदी</span>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-            <Button onClick={generatePDFReport} className="bg-gradient-primary hover:bg-gradient-primary/90 shadow-glow">
+            <div className="flex items-center space-x-2">
+              <Languages className="w-4 h-4 text-primary" />
+              <Button
+                variant={language === 'english' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleLanguageChange('english')}
+                className={language === 'english' ? 'bg-gradient-primary shadow-glow' : ''}
+              >
+                English
+              </Button>
+              <Button
+                variant={language === 'hindi' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleLanguageChange('hindi')}
+                className={language === 'hindi' ? 'bg-gradient-primary shadow-glow' : ''}
+              >
+                हिंदी
+              </Button>
+            </div>
+            <Button 
+              onClick={generatePDFReport} 
+              className="bg-gradient-primary hover:bg-gradient-primary/90 shadow-glow transition-all duration-300 hover:shadow-strong"
+            >
               <Download className="w-4 h-4 mr-2" />
               Download Report
             </Button>
           </div>
         </CardHeader>
         <CardContent>
-          <Accordion type="multiple" className="space-y-4">
+          <Accordion type="multiple" className="space-y-4" value={expandedClauses} onValueChange={setExpandedClauses}>
             {analysis.clauses.map((clause: any, index: number) => (
               <AccordionItem 
                 key={index} 
                 value={`clause-${index}`}
-                className="border rounded-lg bg-card shadow-soft hover:shadow-medium transition-all duration-300"
+                className="border rounded-xl bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-medium transition-all duration-300 hover:border-primary/50"
               >
-                <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <AccordionTrigger className="px-6 py-4 hover:no-underline group">
                   <div className="flex items-center justify-between w-full mr-4">
-                    <div className="flex items-center space-x-3">
-                      <Badge className={cn("px-3 py-1", getRiskColor(clause.risk))}>
-                        {clause.risk}
-                      </Badge>
-                      <Badge className={cn("px-3 py-1", getComplianceColor(clause.compliance))}>
-                        {getComplianceIcon(clause.compliance)}
-                        <span className="ml-1">{clause.compliance}</span>
-                      </Badge>
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-2">
+                        <Badge className={cn("px-3 py-1.5 font-medium", getRiskColor(clause.risk))}>
+                          <AlertTriangle className="w-3 h-3 mr-1" />
+                          {clause.risk} Risk
+                        </Badge>
+                        <Badge className={cn("px-3 py-1.5 font-medium", getComplianceColor(clause.compliance))}>
+                          {getComplianceIcon(clause.compliance)}
+                          <span className="ml-1">{clause.compliance}</span>
+                        </Badge>
+                      </div>
                     </div>
-                    <span className="text-sm text-muted-foreground">Clause {index + 1}</span>
+                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                      <span className="bg-primary/10 px-2 py-1 rounded-md">Clause {index + 1}</span>
+                    </div>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 space-y-4">
-                  <Tabs value={language} className="w-full">
-                    <TabsContent value="english" className="space-y-4 mt-0">
-                      <div className="bg-muted/50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-foreground mb-2">Original Clause</h4>
-                        <p className="text-sm text-foreground italic">"{clause.clause}"</p>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <h4 className="font-semibold text-foreground">Explanation</h4>
-                          <p className="text-sm text-muted-foreground">{clause.explanation}</p>
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <h4 className="font-semibold text-foreground">Recommendation</h4>
-                          <p className="text-sm text-muted-foreground">{clause.suggestion}</p>
-                        </div>
-                      </div>
-                    </TabsContent>
+                <AccordionContent className="px-6 pb-6 space-y-6">
+                  <div className="space-y-6">
+                    {/* Original Clause */}
+                    <div className="bg-muted/30 border border-border/50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-foreground mb-3 flex items-center space-x-2">
+                        <FileText className="w-4 h-4 text-primary" />
+                        <span>Original Contract Text</span>
+                      </h4>
+                      <p className="text-sm text-foreground italic leading-relaxed">"{clause.clause}"</p>
+                    </div>
                     
-                    <TabsContent value="hindi" className="space-y-4 mt-0">
-                      <div className="bg-muted/50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-foreground mb-2">मूल खंड</h4>
-                        <p className="text-sm text-foreground italic">"{clause.clause}"</p>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <div className="space-y-2">
-                          <h4 className="font-semibold text-foreground">हिंदी अनुवाद</h4>
-                          <p className="text-sm text-muted-foreground">{clause.hindi_translation}</p>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <h4 className="font-semibold text-foreground">स्पष्टीकरण</h4>
-                            <p className="text-sm text-muted-foreground">{clause.explanation}</p>
+                    {/* Language-specific content */}
+                    <div className="grid gap-6">
+                      {language === 'english' ? (
+                        <div className="space-y-4 animate-fade-in">
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center space-x-2">
+                                <AlertTriangle className="w-4 h-4 text-accent" />
+                                <span>Risk Analysis</span>
+                              </h4>
+                              <div className="bg-card/50 p-4 rounded-lg border border-border/30">
+                                <p className="text-sm text-muted-foreground leading-relaxed">{clause.explanation}</p>
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center space-x-2">
+                                <CheckCircle className="w-4 h-4 text-success" />
+                                <span>Recommended Action</span>
+                              </h4>
+                              <div className="bg-card/50 p-4 rounded-lg border border-border/30">
+                                <p className="text-sm text-muted-foreground leading-relaxed">{clause.suggestion}</p>
+                              </div>
+                            </div>
                           </div>
-                          
-                          <div className="space-y-2">
-                            <h4 className="font-semibold text-foreground">सुझाव</h4>
-                            <p className="text-sm text-muted-foreground">{clause.suggestion}</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-4 animate-fade-in">
+                          {/* Hindi Translation */}
+                          <div className="space-y-3">
+                            <h4 className="font-semibold text-foreground flex items-center space-x-2">
+                              <Languages className="w-4 h-4 text-accent" />
+                              <span>हिंदी अनुवाद (Hindi Translation)</span>
+                            </h4>
+                            <div className="bg-gradient-to-r from-accent/5 to-primary/5 p-4 rounded-lg border border-accent/20">
+                              <p className="text-sm text-foreground leading-relaxed font-medium">{clause.hindi_translation}</p>
+                            </div>
+                          </div>
+
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center space-x-2">
+                                <AlertTriangle className="w-4 h-4 text-accent" />
+                                <span>जोखिम विश्लेषण (Risk Analysis)</span>
+                              </h4>
+                              <div className="bg-card/50 p-4 rounded-lg border border-border/30">
+                                <p className="text-sm text-muted-foreground leading-relaxed">{clause.explanation}</p>
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center space-x-2">
+                                <CheckCircle className="w-4 h-4 text-success" />
+                                <span>सुझावित कार्रवाई (Recommended Action)</span>
+                              </h4>
+                              <div className="bg-card/50 p-4 rounded-lg border border-border/30">
+                                <p className="text-sm text-muted-foreground leading-relaxed">{clause.suggestion}</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </TabsContent>
-                  </Tabs>
+                      )}
+                    </div>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             ))}
