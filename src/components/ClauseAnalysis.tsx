@@ -9,11 +9,17 @@ import { cn } from '@/lib/utils';
 
 interface ClauseAnalysisProps {
   analysis: any;
+  language?: 'english' | 'hindi';
 }
 
-export const ClauseAnalysis: React.FC<ClauseAnalysisProps> = ({ analysis }) => {
-  const [language, setLanguage] = useState<'english' | 'hindi'>('english');
+export const ClauseAnalysis: React.FC<ClauseAnalysisProps> = ({ analysis, language: propLanguage = 'english' }) => {
+  const [language, setLanguage] = useState<'english' | 'hindi'>(propLanguage);
   const [expandedClauses, setExpandedClauses] = useState<string[]>([]);
+
+  // Update local language state when prop changes
+  useEffect(() => {
+    setLanguage(propLanguage);
+  }, [propLanguage]);
 
   // Enhanced risk color mapping with glow effects
   const getRiskColor = (risk: string) => {

@@ -6,75 +6,75 @@
 
 @layer base {
   :root {
-    /* Dark Theme with Shining Colors */
-    --background: 220 25% 8%;
-    --foreground: 220 15% 95%;
+    /* Ultra-Bright Dark Theme with Neon Colors */
+    --background: 210 30% 5%;
+    --foreground: 220 25% 98%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 220 15% 95%;
+    --card: 220 25% 8%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 220 15% 95%;
+    --popover: 220 25% 6%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 220 100% 60%;
-    --primary-foreground: 220 25% 8%;
-    --primary-glow: 220 100% 70%;
-    --primary-shine: 220 100% 80%;
+    --primary: 220 100% 65%;
+    --primary-foreground: 210 30% 5%;
+    --primary-glow: 220 100% 75%;
+    --primary-shine: 220 100% 85%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 220 15% 90%;
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 220 20% 92%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 220 20% 10%;
+    --muted-foreground: 220 15% 70%;
 
-    --accent: 270 100% 65%;
-    --accent-foreground: 220 25% 8%;
-    --accent-glow: 270 100% 75%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 210 30% 5%;
+    --accent-glow: 280 100% 80%;
 
-    --destructive: 0 85% 55%;
-    --destructive-foreground: 220 25% 8%;
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 210 30% 5%;
 
-    --warning: 45 100% 55%;
-    --warning-foreground: 220 25% 8%;
+    --warning: 45 100% 65%;
+    --warning-foreground: 210 30% 5%;
 
-    --success: 150 80% 50%;
-    --success-foreground: 220 25% 8%;
+    --success: 150 100% 55%;
+    --success-foreground: 210 30% 5%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 16%;
-    --ring: 220 100% 60%;
+    --border: 220 25% 18%;
+    --input: 220 25% 12%;
+    --ring: 220 100% 65%;
 
-    /* Enhanced Risk Colors with Glow */
-    --risk-high: 0 85% 55%;
-    --risk-high-glow: 0 100% 65%;
-    --risk-medium: 45 100% 55%;
-    --risk-medium-glow: 45 100% 65%;
-    --risk-low: 150 80% 50%;
-    --risk-low-glow: 150 90% 60%;
-    --risk-minimal: 180 85% 45%;
-    --risk-minimal-glow: 180 95% 55%;
+    /* Ultra-Bright Risk Colors with Intense Glow */
+    --risk-high: 0 100% 65%;
+    --risk-high-glow: 0 100% 75%;
+    --risk-medium: 45 100% 65%;
+    --risk-medium-glow: 45 100% 75%;
+    --risk-low: 150 100% 55%;
+    --risk-low-glow: 150 100% 65%;
+    --risk-minimal: 180 100% 50%;
+    --risk-minimal-glow: 180 100% 60%;
 
-    /* Shining Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 100% 60%), hsl(220 100% 70%), hsl(220 100% 80%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 15% 15%), hsl(220 20% 18%), hsl(220 15% 20%));
-    --gradient-glass: linear-gradient(135deg, hsl(220 20% 12% / 0.9), hsl(220 15% 10% / 0.7));
-    --gradient-hero: linear-gradient(135deg, hsl(220 100% 60%) 0%, hsl(270 100% 65%) 50%, hsl(220 100% 70%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(270 100% 65%), hsl(280 100% 70%));
-    --gradient-risk-high: linear-gradient(135deg, hsl(0 85% 55%), hsl(0 100% 65%));
-    --gradient-risk-medium: linear-gradient(135deg, hsl(45 100% 55%), hsl(45 100% 65%));
-    --gradient-risk-low: linear-gradient(135deg, hsl(150 80% 50%), hsl(150 90% 60%));
+    /* Ultra-Bright Neon Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 65%), hsl(220 100% 75%), hsl(220 100% 85%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 20% 12%), hsl(220 25% 15%), hsl(220 20% 18%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 25% 8% / 0.95), hsl(220 20% 6% / 0.85));
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 65%) 0%, hsl(280 100% 70%) 30%, hsl(320 100% 65%) 60%, hsl(220 100% 75%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 100% 75%));
+    --gradient-risk-high: linear-gradient(135deg, hsl(0 100% 65%), hsl(0 100% 75%));
+    --gradient-risk-medium: linear-gradient(135deg, hsl(45 100% 65%), hsl(45 100% 75%));
+    --gradient-risk-low: linear-gradient(135deg, hsl(150 100% 55%), hsl(150 100% 65%));
 
-    /* Enhanced Shadows with Glow Effects */
-    --shadow-soft: 0 4px 20px hsl(220 100% 60% / 0.15);
-    --shadow-medium: 0 8px 30px hsl(220 100% 60% / 0.25);
-    --shadow-strong: 0 12px 40px hsl(220 100% 60% / 0.35);
-    --shadow-glow: 0 0 40px hsl(220 100% 70% / 0.6);
-    --shadow-glow-accent: 0 0 30px hsl(270 100% 65% / 0.5);
-    --shadow-glow-risk-high: 0 0 25px hsl(0 100% 65% / 0.4);
-    --shadow-glow-risk-medium: 0 0 25px hsl(45 100% 65% / 0.4);
-    --shadow-glow-risk-low: 0 0 25px hsl(150 90% 60% / 0.4);
+    /* Intense Glow Effects */
+    --shadow-soft: 0 4px 20px hsl(220 100% 65% / 0.25);
+    --shadow-medium: 0 8px 30px hsl(220 100% 65% / 0.35);
+    --shadow-strong: 0 12px 40px hsl(220 100% 65% / 0.45);
+    --shadow-glow: 0 0 50px hsl(220 100% 75% / 0.8);
+    --shadow-glow-accent: 0 0 40px hsl(280 100% 70% / 0.7);
+    --shadow-glow-risk-high: 0 0 30px hsl(0 100% 65% / 0.6);
+    --shadow-glow-risk-medium: 0 0 30px hsl(45 100% 65% / 0.6);
+    --shadow-glow-risk-low: 0 0 30px hsl(150 100% 55% / 0.6);
 
-    /* Shining Animation Variables */
+    /* Enhanced Animation Variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --transition-glow: box-shadow 0.3s ease, transform 0.3s ease;

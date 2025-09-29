@@ -7,9 +7,10 @@ import { cn } from '@/lib/utils';
 
 interface RiskDashboardProps {
   analysis: any;
+  language?: 'english' | 'hindi';
 }
 
-export const RiskDashboard: React.FC<RiskDashboardProps> = ({ analysis }) => {
+export const RiskDashboard: React.FC<RiskDashboardProps> = ({ analysis, language = 'english' }) => {
   const getRiskColor = (risk: string) => {
     switch (risk.toLowerCase()) {
       case 'high': return 'bg-risk-high text-white';
