@@ -1,7 +1,5 @@
 # LegalAI - Contract Analysis & Risk Assessment Bot
 
-![LegalAI Banner](https://img.shields.io/badge/LegalAI-Contract%20Analysis-blue?style=for-the-badge&logo=react)
-![HCL GUVI Hackathon](https://img.shields.io/badge/HCL%20GUVI-Hackathon%202025-orange?style=for-the-badge)
 
 A cutting-edge AI-powered legal contract analysis tool that provides instant risk assessment, clause-by-clause analysis, and actionable recommendations in both English and Hindi. Built for the **HCL GUVI Hackathon 2025**.
 
@@ -109,12 +107,7 @@ npm run preview
 yarn preview
 ```
 
-## 🚀 Deployment
 
-### **Deploy to Lovable (Recommended)**
-1. Open your [Lovable Project](https://lovable.dev/projects/facf3b2b-0b9f-41ee-80be-5525ac63addd)
-2. Click **Share** → **Publish**
-3. Your app will be deployed automatically
 
 ### **Deploy to Vercel**
 ```bash
@@ -247,7 +240,7 @@ This project is created for the **HCL GUVI Hackathon 2025** and is intended for 
 
 **Event**: HCL GUVI Hackathon 2025  
 **Category**: AI/ML Solutions  
-**Team**: [Your Team Name]  
+**Team**: []  
 **Technology**: Legal Tech AI
 
 ## 🆘 Troubleshooting
@@ -273,24 +266,13 @@ npx tsc --noEmit
 npm run build
 ```
 
-## 📞 Support
 
-For support and questions:
-- 📧 Email: [your-email@example.com]
-- 💬 Discord: [Your Discord]
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/legal-ai/issues)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **HCL GUVI** for organizing the hackathon
-- **Lovable** for the development platform
-- **shadcn** for the UI component library
-- **Tailwind CSS** for the styling framework
+
 
 ---
 
 **Built with ❤️ for HCL GUVI Hackathon 2025**
-
-![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?style=flat&logo=react)
-![Powered by TypeScript](https://img.shields.io/badge/Powered%20by-TypeScript-3178C6?style=flat&logo=typescript)
-![Styled with Tailwind](https://img.shields.io/badge/Styled%20with-Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css)
