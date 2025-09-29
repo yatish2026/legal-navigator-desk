@@ -22,8 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          glow: "hsl(var(--primary-glow))",
-          shine: "hsl(var(--primary-shine))",
+          bright: "hsl(var(--primary-bright))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -48,7 +47,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-          glow: "hsl(var(--accent-glow))",
+          bright: "hsl(var(--accent-bright))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -60,13 +59,9 @@ export default {
         },
         risk: {
           high: "hsl(var(--risk-high))",
-          "high-glow": "hsl(var(--risk-high-glow))",
           medium: "hsl(var(--risk-medium))",
-          "medium-glow": "hsl(var(--risk-medium-glow))",
           low: "hsl(var(--risk-low))",
-          "low-glow": "hsl(var(--risk-low-glow))",
           minimal: "hsl(var(--risk-minimal))",
-          "minimal-glow": "hsl(var(--risk-minimal-glow))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -98,11 +93,7 @@ export default {
         'soft': 'var(--shadow-soft)',
         'medium': 'var(--shadow-medium)',
         'strong': 'var(--shadow-strong)',
-        'glow': 'var(--shadow-glow)',
-        'glow-accent': 'var(--shadow-glow-accent)',
-        'glow-risk-high': 'var(--shadow-glow-risk-high)',
-        'glow-risk-medium': 'var(--shadow-glow-risk-medium)',
-        'glow-risk-low': 'var(--shadow-glow-risk-low)',
+        'clean': 'var(--shadow-clean)',
       },
       keyframes: {
         "accordion-down": {
@@ -121,14 +112,14 @@ export default {
             height: "0",
           },
         },
-        "pulse-glow": {
+        "pulse-clean": {
           "0%, 100%": {
-            boxShadow: "0 0 30px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--primary) / 0.2)",
             transform: "scale(1)",
+            opacity: "1",
           },
           "50%": {
-            boxShadow: "0 0 50px hsl(var(--primary) / 0.6), 0 0 100px hsl(var(--primary) / 0.3)",
             transform: "scale(1.02)",
+            opacity: "0.9",
           },
         },
         "slide-in": {
@@ -171,7 +162,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "pulse-clean": "pulse-clean 3s ease-in-out infinite",
         "slide-in": "slide-in 0.6s ease-out",
         "fade-in": "fade-in 0.4s ease-out",
         "shimmer": "shimmer 2s linear infinite",

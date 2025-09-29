@@ -6,78 +6,68 @@
 
 @layer base {
   :root {
-    /* Ultra-Bright Dark Theme with Neon Colors */
-    --background: 210 30% 5%;
-    --foreground: 220 25% 98%;
+    /* Bright Cool Theme - No Glow Effects */
+    --background: 215 25% 6%;
+    --foreground: 215 20% 98%;
 
-    --card: 220 25% 8%;
-    --card-foreground: 220 20% 95%;
+    --card: 215 22% 10%;
+    --card-foreground: 215 18% 95%;
 
-    --popover: 220 25% 6%;
-    --popover-foreground: 220 20% 95%;
+    --popover: 215 25% 8%;
+    --popover-foreground: 215 18% 95%;
 
-    --primary: 220 100% 65%;
-    --primary-foreground: 210 30% 5%;
-    --primary-glow: 220 100% 75%;
-    --primary-shine: 220 100% 85%;
+    --primary: 200 100% 60%;
+    --primary-foreground: 215 25% 6%;
+    --primary-bright: 200 100% 70%;
 
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 220 20% 92%;
+    --secondary: 215 18% 14%;
+    --secondary-foreground: 215 18% 88%;
 
-    --muted: 220 20% 10%;
-    --muted-foreground: 220 15% 70%;
+    --muted: 215 18% 12%;
+    --muted-foreground: 215 12% 65%;
 
-    --accent: 280 100% 70%;
-    --accent-foreground: 210 30% 5%;
-    --accent-glow: 280 100% 80%;
+    --accent: 180 100% 55%;
+    --accent-foreground: 215 25% 6%;
+    --accent-bright: 180 100% 65%;
 
-    --destructive: 0 100% 65%;
-    --destructive-foreground: 210 30% 5%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 215 25% 6%;
 
-    --warning: 45 100% 65%;
-    --warning-foreground: 210 30% 5%;
+    --warning: 40 100% 60%;
+    --warning-foreground: 215 25% 6%;
 
-    --success: 150 100% 55%;
-    --success-foreground: 210 30% 5%;
+    --success: 140 85% 50%;
+    --success-foreground: 215 25% 6%;
 
-    --border: 220 25% 18%;
-    --input: 220 25% 12%;
-    --ring: 220 100% 65%;
+    --border: 215 20% 18%;
+    --input: 215 20% 14%;
+    --ring: 200 100% 60%;
 
-    /* Ultra-Bright Risk Colors with Intense Glow */
-    --risk-high: 0 100% 65%;
-    --risk-high-glow: 0 100% 75%;
-    --risk-medium: 45 100% 65%;
-    --risk-medium-glow: 45 100% 75%;
-    --risk-low: 150 100% 55%;
-    --risk-low-glow: 150 100% 65%;
-    --risk-minimal: 180 100% 50%;
-    --risk-minimal-glow: 180 100% 60%;
+    /* Bright Risk Colors - No Glow */
+    --risk-high: 0 85% 65%;
+    --risk-medium: 40 100% 65%;
+    --risk-low: 140 85% 55%;
+    --risk-minimal: 160 80% 50%;
 
-    /* Ultra-Bright Neon Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 100% 65%), hsl(220 100% 75%), hsl(220 100% 85%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 20% 12%), hsl(220 25% 15%), hsl(220 20% 18%));
-    --gradient-glass: linear-gradient(135deg, hsl(220 25% 8% / 0.95), hsl(220 20% 6% / 0.85));
-    --gradient-hero: linear-gradient(135deg, hsl(220 100% 65%) 0%, hsl(280 100% 70%) 30%, hsl(320 100% 65%) 60%, hsl(220 100% 75%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 100% 75%));
-    --gradient-risk-high: linear-gradient(135deg, hsl(0 100% 65%), hsl(0 100% 75%));
-    --gradient-risk-medium: linear-gradient(135deg, hsl(45 100% 65%), hsl(45 100% 75%));
-    --gradient-risk-low: linear-gradient(135deg, hsl(150 100% 55%), hsl(150 100% 65%));
+    /* Clean Bright Gradients - No Glow */
+    --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(200 100% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(215 18% 14%), hsl(215 20% 16%));
+    --gradient-glass: linear-gradient(135deg, hsl(215 22% 10% / 0.95), hsl(215 18% 8% / 0.85));
+    --gradient-hero: linear-gradient(135deg, hsl(200 100% 60%) 0%, hsl(180 100% 55%) 50%, hsl(160 80% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(180 100% 55%), hsl(180 100% 65%));
+    --gradient-risk-high: linear-gradient(135deg, hsl(0 85% 65%), hsl(0 85% 70%));
+    --gradient-risk-medium: linear-gradient(135deg, hsl(40 100% 65%), hsl(40 100% 70%));
+    --gradient-risk-low: linear-gradient(135deg, hsl(140 85% 55%), hsl(140 85% 60%));
 
-    /* Intense Glow Effects */
-    --shadow-soft: 0 4px 20px hsl(220 100% 65% / 0.25);
-    --shadow-medium: 0 8px 30px hsl(220 100% 65% / 0.35);
-    --shadow-strong: 0 12px 40px hsl(220 100% 65% / 0.45);
-    --shadow-glow: 0 0 50px hsl(220 100% 75% / 0.8);
-    --shadow-glow-accent: 0 0 40px hsl(280 100% 70% / 0.7);
-    --shadow-glow-risk-high: 0 0 30px hsl(0 100% 65% / 0.6);
-    --shadow-glow-risk-medium: 0 0 30px hsl(45 100% 65% / 0.6);
-    --shadow-glow-risk-low: 0 0 30px hsl(150 100% 55% / 0.6);
+    /* Clean Shadows - No Glow */
+    --shadow-soft: 0 4px 20px hsl(215 25% 6% / 0.4);
+    --shadow-medium: 0 8px 30px hsl(215 25% 6% / 0.5);
+    --shadow-strong: 0 12px 40px hsl(215 25% 6% / 0.6);
+    --shadow-clean: 0 2px 10px hsl(200 100% 60% / 0.2);
 
-    /* Enhanced Animation Variables */
+    /* Animation Variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-glow: box-shadow 0.3s ease, transform 0.3s ease;
 
     --radius: 0.5rem;
 

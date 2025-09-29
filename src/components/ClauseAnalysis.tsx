@@ -21,21 +21,21 @@ export const ClauseAnalysis: React.FC<ClauseAnalysisProps> = ({ analysis, langua
     setLanguage(propLanguage);
   }, [propLanguage]);
 
-  // Enhanced risk color mapping with glow effects
+  // Enhanced risk color mapping with clean effects
   const getRiskColor = (risk: string) => {
     switch (risk.toLowerCase()) {
-      case 'high': return 'bg-gradient-risk-high text-white border-risk-high shadow-glow-risk-high';
-      case 'medium': return 'bg-gradient-risk-medium text-white border-risk-medium shadow-glow-risk-medium';
-      case 'low': return 'bg-gradient-risk-low text-white border-risk-low shadow-glow-risk-low';
+      case 'high': return 'bg-gradient-risk-high text-white border-risk-high shadow-clean';
+      case 'medium': return 'bg-gradient-risk-medium text-white border-risk-medium shadow-clean';
+      case 'low': return 'bg-gradient-risk-low text-white border-risk-low shadow-clean';
       default: return 'bg-risk-minimal text-white border-risk-minimal';
     }
   };
 
   const getComplianceColor = (compliance: string) => {
     switch (compliance.toLowerCase()) {
-      case 'yes': return 'bg-gradient-risk-low text-white shadow-glow-risk-low';
-      case 'no': return 'bg-gradient-risk-high text-white shadow-glow-risk-high';
-      default: return 'bg-gradient-risk-medium text-white shadow-glow-risk-medium';
+      case 'yes': return 'bg-gradient-risk-low text-white shadow-clean';
+      case 'no': return 'bg-gradient-risk-high text-white shadow-clean';
+      default: return 'bg-gradient-risk-medium text-white shadow-clean';
     }
   };
 
@@ -148,15 +148,17 @@ Report ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}
   return (
     <div className="space-y-6 animate-slide-in">
       {/* Enhanced Contract Overview */}
-      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow">
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-clean">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-accent rounded-lg flex items-center justify-center shadow-glow-accent">
+              <div className="w-10 h-10 bg-gradient-accent rounded-lg flex items-center justify-center shadow-clean">
                 <FileText className="w-5 h-5 text-white" />
               </div>
               <div>
-                <CardTitle className="text-xl text-foreground">Contract Overview</CardTitle>
+                <CardTitle className="text-xl text-foreground">
+                  {language === 'english' ? 'Contract Overview' : 'अनुबंध अवलोकन'}
+                </CardTitle>
                 <p className="text-sm text-muted-foreground">{analysis.contractType || 'Legal Agreement'}</p>
               </div>
             </div>
@@ -175,13 +177,13 @@ Report ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}
       </Card>
 
       {/* Enhanced Clause Analysis */}
-      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow">
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-clean">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="flex items-center space-x-2">
             <Shield className="w-5 h-5 text-primary" />
-            <span>Detailed Clause Analysis</span>
+            <span>{language === 'english' ? 'Detailed Clause Analysis' : 'विस्तृत खंड विश्लेषण'}</span>
             <Badge variant="outline" className="ml-2">
-              {analysis.clauses.length} Clauses
+              {analysis.clauses.length} {language === 'english' ? 'Clauses' : 'खंड'}
             </Badge>
           </CardTitle>
           <div className="flex items-center space-x-4">
@@ -191,7 +193,7 @@ Report ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}
                 variant={language === 'english' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => handleLanguageChange('english')}
-                className={language === 'english' ? 'bg-gradient-primary shadow-glow' : ''}
+                className={language === 'english' ? 'bg-gradient-primary shadow-clean' : ''}
               >
                 English
               </Button>
@@ -199,17 +201,17 @@ Report ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}
                 variant={language === 'hindi' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => handleLanguageChange('hindi')}
-                className={language === 'hindi' ? 'bg-gradient-primary shadow-glow' : ''}
+                className={language === 'hindi' ? 'bg-gradient-primary shadow-clean' : ''}
               >
                 हिंदी
               </Button>
             </div>
             <Button 
               onClick={generatePDFReport} 
-              className="bg-gradient-primary hover:bg-gradient-primary/90 shadow-glow transition-all duration-300 hover:shadow-strong"
+              className="bg-gradient-primary hover:bg-gradient-primary/90 shadow-clean transition-all duration-300 hover:shadow-strong"
             >
               <Download className="w-4 h-4 mr-2" />
-              Download Report
+              {language === 'english' ? 'Download Report' : 'रिपोर्ट डाउनलोड करें'}
             </Button>
           </div>
         </CardHeader>

@@ -45,52 +45,68 @@ export const RiskDashboard: React.FC<RiskDashboardProps> = ({ analysis, language
 
   return (
     <div className="space-y-6 animate-slide-in">
-      {/* Enhanced Overall Risk Score with glow effects */}
-      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow hover:shadow-strong transition-all duration-500">
+      {/* Enhanced Overall Risk Score with clean effects */}
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-clean hover:shadow-strong transition-all duration-500">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold text-foreground bg-gradient-primary bg-clip-text text-transparent">
-            Contract Risk Assessment
+            {language === 'english' ? 'Contract Risk Assessment' : 'अनुबंध जोखिम मूल्यांकन'}
           </CardTitle>
           <p className="text-muted-foreground">
-            Analysis completed for: <span className="text-accent font-medium">{analysis.fileName}</span>
+            {language === 'english' ? 'Analysis completed for:' : 'विश्लेषण पूर्ण:'} <span className="text-accent font-medium">{analysis.fileName}</span>
           </p>
           <p className="text-xs text-muted-foreground">
-            Contract Type: {analysis.contractType} • Complexity: {analysis.legalComplexity}
+            {language === 'english' 
+              ? `Contract Type: ${analysis.contractType} • Complexity: ${analysis.legalComplexity}`
+              : `अनुबंध प्रकार: ${analysis.contractType} • जटिलता: ${analysis.legalComplexity}`
+            }
           </p>
         </CardHeader>
         <CardContent className="space-y-8">
           <div className="text-center space-y-6">
             <div className="relative inline-flex items-center justify-center">
-              <div className="w-40 h-40 rounded-full bg-gradient-hero flex items-center justify-center shadow-glow animate-pulse-glow border-4 border-primary/30">
+              <div className="w-40 h-40 rounded-full bg-gradient-hero flex items-center justify-center shadow-clean animate-pulse-clean border-4 border-primary/30">
                 <div className="text-center text-white">
                   <div className="text-4xl font-bold mb-1">{overallRiskScore}%</div>
-                  <div className="text-sm opacity-90 font-medium">Risk Score</div>
+                  <div className="text-sm opacity-90 font-medium">
+                    {language === 'english' ? 'Risk Score' : 'जोखिम स्कोर'}
+                  </div>
                 </div>
               </div>
-              {/* Animated rings around the score */}
+              {/* Clean animated rings */}
               <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping"></div>
               <div className="absolute inset-2 rounded-full border border-accent/30 animate-pulse"></div>
             </div>
-            <Badge className={cn("text-xl px-6 py-3 shadow-glow", getRiskColor(analysis.overall_risk_score))}>
+            <Badge className={cn("text-xl px-6 py-3 shadow-clean", getRiskColor(analysis.overall_risk_score))}>
               {getRiskIcon(analysis.overall_risk_score)}
-              <span className="ml-2 font-bold">{analysis.overall_risk_score} Risk Level</span>
+              <span className="ml-2 font-bold">
+                {language === 'english' 
+                  ? `${analysis.overall_risk_score} Risk Level`
+                  : `${analysis.overall_risk_score} जोखिम स्तर`
+                }
+              </span>
             </Badge>
           </div>
 
           <div className="grid grid-cols-3 gap-6 mt-12">
-            <div className="text-center p-6 bg-gradient-glass backdrop-blur-sm rounded-xl border border-primary/20 shadow-soft hover:shadow-glow transition-all duration-300">
+            <div className="text-center p-6 bg-gradient-glass backdrop-blur-xl rounded-xl border border-primary/20 shadow-soft hover:shadow-clean transition-all duration-300">
               <div className="text-3xl font-bold text-foreground mb-2">{totalClauses}</div>
-              <div className="text-sm text-muted-foreground font-medium">Total Clauses</div>
+              <div className="text-sm text-muted-foreground font-medium">
+                {language === 'english' ? 'Total Clauses' : 'कुल खंड'}
+              </div>
               <div className="w-8 h-1 bg-gradient-primary rounded-full mx-auto mt-2"></div>
             </div>
-            <div className="text-center p-6 bg-gradient-glass backdrop-blur-sm rounded-xl border border-risk-high/20 shadow-soft hover:shadow-glow-risk-high transition-all duration-300">
+            <div className="text-center p-6 bg-gradient-glass backdrop-blur-xl rounded-xl border border-risk-high/20 shadow-soft hover:shadow-clean transition-all duration-300">
               <div className="text-3xl font-bold text-risk-high mb-2">{highRiskClauses}</div>
-              <div className="text-sm text-muted-foreground font-medium">High Risk</div>
+              <div className="text-sm text-muted-foreground font-medium">
+                {language === 'english' ? 'High Risk' : 'उच्च जोखिम'}
+              </div>
               <div className="w-8 h-1 bg-gradient-risk-high rounded-full mx-auto mt-2"></div>
             </div>
-            <div className="text-center p-6 bg-gradient-glass backdrop-blur-sm rounded-xl border border-success/20 shadow-soft hover:shadow-glow-risk-low transition-all duration-300">
+            <div className="text-center p-6 bg-gradient-glass backdrop-blur-xl rounded-xl border border-success/20 shadow-soft hover:shadow-clean transition-all duration-300">
               <div className="text-3xl font-bold text-success mb-2">{compliantClauses}</div>
-              <div className="text-sm text-muted-foreground font-medium">Compliant</div>
+              <div className="text-sm text-muted-foreground font-medium">
+                {language === 'english' ? 'Compliant' : 'अनुपालन'}
+              </div>
               <div className="w-8 h-1 bg-gradient-risk-low rounded-full mx-auto mt-2"></div>
             </div>
           </div>
@@ -98,13 +114,15 @@ export const RiskDashboard: React.FC<RiskDashboardProps> = ({ analysis, language
       </Card>
 
       {/* Enhanced Summary */}
-      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-glow hover:shadow-strong transition-all duration-500">
+      <Card className="bg-gradient-glass backdrop-blur-sm border-primary/30 shadow-clean hover:shadow-strong transition-all duration-500">
         <CardHeader>
           <CardTitle className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-accent rounded-lg flex items-center justify-center shadow-glow-accent">
+            <div className="w-8 h-8 bg-gradient-accent rounded-lg flex items-center justify-center shadow-clean">
               <AlertTriangle className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl">Executive Summary</span>
+            <span className="text-xl">
+              {language === 'english' ? 'Executive Summary' : 'कार्यकारी सारांश'}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -116,7 +134,7 @@ export const RiskDashboard: React.FC<RiskDashboardProps> = ({ analysis, language
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground text-lg flex items-center space-x-2">
                 <CheckCircle className="w-5 h-5 text-success" />
-                <span>Priority Recommendations:</span>
+                <span>{language === 'english' ? 'Priority Recommendations:' : 'प्राथमिकता सिफारिशें:'}</span>
               </h4>
               <div className="grid gap-3">
                 {analysis.recommendations.map((rec: string, index: number) => (
